@@ -57,6 +57,11 @@ int main(int argc, char *argv[]){
 		return -2;
 	}
 
+    if(resolver_log == requester_log){
+        printf("Error: log files must be unique\n");
+		return -2;
+    }
+
     worker_init();
 
     // Request struct
