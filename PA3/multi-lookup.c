@@ -88,7 +88,6 @@ int main(int argc, char *argv[]){
 
     // close each resolver
     worker_close(resolve_n);
-
     for(int i = 0; i < resolve_n; i++){
         pthread_join(resolver_id[i], NULL);
     }

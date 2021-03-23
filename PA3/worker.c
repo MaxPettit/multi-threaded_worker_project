@@ -13,9 +13,9 @@ void worker_init(void){
     array_init();
 }
 
-// pushes a close string to array for each resolver thread
+// pushes one close string to array for each resolver thread
 void worker_close(int n){
-    for(int i = 0; i < n; i++) array_push(CLOSE_PILL);
+    for(int i = 0; i < n; i++) array_push(CLOSE_KEY);
 }
 
 void * request_worker(void * rq_init){
@@ -78,7 +78,7 @@ void * resolve_worker(void * rs_init){
 
     while(1){
         array_pop(hostname);
-        if(strcmp(hostname, CLOSE_PILL) == 0) break;
+        if(strcmp(hostname, CLOSE_KEY) == 0) break;
         if(dnslookup(hostname, ip_string, MAX_IP_LENGTH)){
             strcpy(ip_string, "NOT_RESOLVED");
         }

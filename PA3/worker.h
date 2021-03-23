@@ -10,7 +10,7 @@
 #include "array.h"
 
 #define MAX_IP_LENGTH INET6_ADDRSTRLEN
-#define CLOSE_PILL "XXXCLOSEPILLXXX"
+#define CLOSE_KEY "XXXCLOSEKEYXXX"
 
 // struct for each type worker
 typedef struct{
