@@ -56,7 +56,7 @@ void * request_worker(void * rq_init){
     
     // print count
     pthread_mutex_lock(&print_mutex);
-    printf("thread %d serviced %d files\n", (int) tid, count);
+    printf("thread %8x serviced %d files\n", (int) tid, count);
     pthread_mutex_unlock(&print_mutex);
 
     free(hostname);
@@ -86,7 +86,7 @@ void * resolve_worker(void * rs_init){
 
     // print count
     pthread_mutex_lock(&print_mutex);
-    printf("thread %d resolved %d hostnames\n", (int) tid, count);
+    printf("thread %8x resolved %d hostnames\n", (int) tid, count);
     pthread_mutex_unlock(&print_mutex);
 
     free(hostname);
