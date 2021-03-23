@@ -45,6 +45,11 @@ int main(int argc, char *argv[]){
         return -1;
     }
 
+    if(strcmp(argv[3], argv[4]) == 0){
+        printf("Error: log files must be unique\n");
+		return -2;
+    }
+
     requester_log = fopen(argv[3], "w");
 	if (requester_log == NULL){
 		printf("Error opening requester_log file\n");
@@ -56,11 +61,6 @@ int main(int argc, char *argv[]){
 		printf("Error opening resolver_log file\n");
 		return -2;
 	}
-
-    if(resolver_log == requester_log){
-        printf("Error: log files must be unique\n");
-		return -2;
-    }
 
     worker_init();
 
