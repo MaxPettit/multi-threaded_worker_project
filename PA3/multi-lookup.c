@@ -27,14 +27,14 @@ int main(int argc, char *argv[]){
         return 0;
     }
     rv = sscanf(argv[1], "%d", &request_n);
-    if(rv != 1 || request_n > MAX_REQUESTER_THREADS){
-        fprintf(stderr, "Too many requester threads (limit %d)\n", MAX_REQUESTER_THREADS);
+    if(rv != 1 || request_n > MAX_REQUESTER_THREADS || request_n < 1){
+        fprintf(stderr, "Invalid number of requester threads (limit %d)\n", MAX_REQUESTER_THREADS);
         return -1;
     }
 
     rv = sscanf(argv[2], "%d", &resolve_n);
-    if(rv != 1 || resolve_n > MAX_RESOLVER_THREADS){
-        fprintf(stderr, "Too many resolver threads (limit %d)\n", MAX_RESOLVER_THREADS);
+    if(rv != 1 || resolve_n > MAX_RESOLVER_THREADS || || resolve_n < 1){
+        fprintf(stderr, "Invalid number of resolver threads (limit %d)\n", MAX_RESOLVER_THREADS);
         return -1;
     }
 
@@ -97,7 +97,7 @@ int main(int argc, char *argv[]){
     }
 
     printf("%s: total time is %ld.%06d seconds\n", argv[0], 
-        end_time.tv_sec-start_time.tv_sec, (int) end_time.tv_usec-start_time.tv_usec /1000);
+        end_time.tv_sec-start_time.tv_sec, (int) (end_time.tv_usec-start_time.tv_usec /1000));
 
     return 0;
 }

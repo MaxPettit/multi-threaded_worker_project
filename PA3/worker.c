@@ -51,6 +51,7 @@ void * request_worker(void * rq_init){
             pthread_mutex_unlock(&rq_log_mutex);
         }
         count++;
+        fclose(fptr);
     }
     
     // print count
