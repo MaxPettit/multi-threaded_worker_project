@@ -86,7 +86,8 @@ int main(int argc, char *argv[]){
         pthread_join(requester_id[i], NULL);
     }
 
-    rs_init.complete = 1;
+    // close each resolver
+    worker_close(resolve_n);
 
     for(int i = 0; i < resolve_n; i++){
         pthread_join(resolver_id[i], NULL);

@@ -10,6 +10,7 @@
 #include "array.h"
 
 #define MAX_IP_LENGTH INET6_ADDRSTRLEN
+#define CLOSE_PILL "XXXCLOSEPILLXXX"
 
 // struct for each type worker
 typedef struct{
@@ -27,5 +28,6 @@ typedef struct{
 void worker_init(void);
 void * request_worker(void * rq_init);
 void * resolve_worker(void * rs_init);
+void worker_close(int n);
 
 #endif

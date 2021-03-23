@@ -13,6 +13,11 @@ void worker_init(void){
     array_init();
 }
 
+// pushes a close string to array for each resolver thread
+void worker_close(int n){
+    for(int i = 0; i < n; i++) array_push(CLOSE_PILL);
+}
+
 void * request_worker(void * rq_init){
     request_init_struct * rq_struct = (request_init_struct *) rq_init;
 
@@ -72,8 +77,8 @@ void * resolve_worker(void * rs_init){
     hostname = (char *)malloc(MAX_NAME_LENGTH * sizeof(char));
 
     while(1){
-        if(rs_struct->complete && arr_empty()) break;
         array_pop(hostname);
+        if(strcmp(hostname, CLOSE_PILL) == 0) break;
         if(dnslookup(hostname, ip_string, MAX_IP_LENGTH)){
             strcpy(ip_string, "NOT_RESOLVED");
         }
