@@ -97,7 +97,7 @@ int main(int argc, char *argv[]){
     }
 
     printf("%s: total time is %ld.%06d seconds\n", argv[0], 
-        end_time.tv_sec-start_time.tv_sec, end_time.tv_usec-start_time.tv_usec /1000);
+        end_time.tv_sec-start_time.tv_sec, (int) end_time.tv_usec-start_time.tv_usec /1000);
 
     return 0;
 }
