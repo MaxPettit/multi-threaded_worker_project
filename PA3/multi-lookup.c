@@ -22,7 +22,7 @@ int main(int argc, char *argv[]){
         return -1;
     }
 
-    if(argc < 6){
+    if(argc < 5){
         print_usage();
         return 0;
     }
