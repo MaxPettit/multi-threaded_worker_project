@@ -27,13 +27,13 @@ int main(int argc, char *argv[]){
         return 0;
     }
     rv = sscanf(argv[1], "%d", &request_n);
-    if(rv != 1 || request_n > MAX_REQUESTER_THREADS || request_n < 1){
+    if(rv != 1 || request_n > MAX_REQUESTER_THREADS || request_n < 0){
         fprintf(stderr, "Invalid number of requester threads (limit %d)\n", MAX_REQUESTER_THREADS);
         return -1;
     }
 
     rv = sscanf(argv[2], "%d", &resolve_n);
-    if(rv != 1 || resolve_n > MAX_RESOLVER_THREADS || resolve_n < 1){
+    if(rv != 1 || resolve_n > MAX_RESOLVER_THREADS || resolve_n < 0){
         fprintf(stderr, "Invalid number of resolver threads (limit %d)\n", MAX_RESOLVER_THREADS);
         return -1;
     }
