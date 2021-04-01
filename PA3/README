@@ -1,0 +1,20 @@
+CSCI 3753 PA3 CU Bolder
+author: Max Pettit
+
+multi-lookup:
+  main file, takes in and checks user input, creates worker threads
+  
+worker:
+  each thread runs as either request worker or resolver worker
+  utilizes "array.h" to access shared buffer
+  utilizes "util.h" for dns lookup
+  mutexes protect input files, log files, stdio/stderr
+ 
+array:
+  manages shared array operations
+  utilizies mutexes and condition variables
+ 
+util:
+  author: Andy Sayler
+  modified: Shiv Mishra
+  contains declarations of utility functions for PA3 (dnslookup)
