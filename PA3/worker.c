@@ -95,10 +95,6 @@ void * resolve_worker(void * rs_init){
             strcpy(ip_string, "NOT_RESOLVED");
             count--;
         }
-        // if(strcmp("UNHANDELED", ip_string) == 0){ 
-        //     strcpy(ip_string, "NOT_RESOLVED");
-        //     count--;
-        // }
         pthread_mutex_lock(&rs_log_mutex);
         fprintf(rs_struct->results_log, "%s, %s\n", hostname, ip_string);
         pthread_mutex_unlock(&rs_log_mutex);
