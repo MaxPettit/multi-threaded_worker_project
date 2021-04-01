@@ -1,6 +1,11 @@
 CSCI 3753 PA3 CU Bolder
 author: Max Pettit
 
+Multi-threaded application, written in C, that resolves domain names to IP addresses.
+
+usage:
+multi-lookup <# requester> <# resolver> <requester log> <resolver log> [ <data file> ... ]
+
 multi-lookup:
   main file, takes in and checks user input, creates worker threads
   
