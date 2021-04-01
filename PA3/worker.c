@@ -29,6 +29,12 @@ void * request_worker(void * rq_init){
     pthread_t tid = pthread_self();
 
     hostname = (char *)malloc(MAX_NAME_LENGTH * sizeof(char));
+    if(!hostname){
+        pthread_mutex_lock(&print_mutex);
+        printf("Exiting: Malloc Error\n");
+        pthread_mutex_unlock(&print_mutex);
+        pthread_exit(NULL);  
+    }
     
     while(1){
         pthread_mutex_lock(&pos_mutex);
@@ -75,14 +81,24 @@ void * resolve_worker(void * rs_init){
     int count = 0;
     pthread_t tid = pthread_self();
     hostname = (char *)malloc(MAX_NAME_LENGTH * sizeof(char));
+    if(!hostname){
+        pthread_mutex_lock(&print_mutex);
+        printf("Exiting: Malloc Error\n");
+        pthread_mutex_unlock(&print_mutex);
+        pthread_exit(NULL);  
+    }
 
     while(1){
         array_pop(hostname);
         if(strcmp(hostname, CLOSE_KEY) == 0) break;
         if(dnslookup(hostname, ip_string, MAX_IP_LENGTH)){
             strcpy(ip_string, "NOT_RESOLVED");
+            count--;
         }
-        if(strcmp("UNHANDELED", ip_string) == 0) strcpy(ip_string, "NOT_RESOLVED");
+        // if(strcmp("UNHANDELED", ip_string) == 0){ 
+        //     strcpy(ip_string, "NOT_RESOLVED");
+        //     count--;
+        // }
         pthread_mutex_lock(&rs_log_mutex);
         fprintf(rs_struct->results_log, "%s, %s\n", hostname, ip_string);
         pthread_mutex_unlock(&rs_log_mutex);

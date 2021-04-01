@@ -10,6 +10,8 @@ SHARED_BUF_STRUCT shared_buf;
 pthread_mutex_t array_mutex;
 pthread_cond_t full_cond, empty_cond;
 
+static int arr_empty(void);
+static int arr_full(void);
 
 void array_init(void){
     shared_buf.read_ptr = 0;
@@ -19,12 +21,12 @@ void array_init(void){
     pthread_cond_init(&empty_cond, NULL);
 }
 
-int arr_full(void){
+static int arr_full(void){
     if((shared_buf.write_ptr+1)% ARRAY_SIZE == shared_buf.read_ptr) return 1;
     return 0;
 }
 
-int arr_empty(void){
+static int arr_empty(void){
     if(shared_buf.write_ptr == shared_buf.read_ptr) return 1;
     return 0;
 }

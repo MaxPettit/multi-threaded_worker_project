@@ -12,7 +12,5 @@
 void array_init(void);
 void array_push(char * hostname);
 void array_pop(char * readname);
-int arr_full(void);
-int arr_empty(void);
 
 #endif
