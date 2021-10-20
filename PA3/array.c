@@ -6,9 +6,10 @@ typedef struct{
     int write_ptr;
 } SHARED_BUF_STRUCT;
 
-SHARED_BUF_STRUCT shared_buf;
-pthread_mutex_t array_mutex;
-pthread_cond_t full_cond, empty_cond;
+static SHARED_BUF_STRUCT shared_buf;
+static pthread_mutex_t array_mutex;
+static pthread_cond_t full_cond;
+static pthread_cond_t  empty_cond;
 
 static int arr_empty(void);
 static int arr_full(void);

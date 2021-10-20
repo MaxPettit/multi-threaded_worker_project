@@ -1,9 +1,9 @@
 #include "worker.h"
 
-pthread_mutex_t pos_mutex;
-pthread_mutex_t print_mutex;
-pthread_mutex_t rq_log_mutex;
-pthread_mutex_t rs_log_mutex;
+static pthread_mutex_t pos_mutex;
+static pthread_mutex_t print_mutex;
+static pthread_mutex_t rq_log_mutex;
+static pthread_mutex_t rs_log_mutex;
 
 void worker_init(void){
     pthread_mutex_init(&pos_mutex, NULL);
